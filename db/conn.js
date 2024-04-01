@@ -1,31 +1,27 @@
-const password = 'admin';
-
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const password = 'admin';
 const uri = `mongodb+srv://admin:${password}@cluster0.rokvirh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
-    serverApi: {
-      version: ServerApiVersion.v1,
-      strict: true,
-      deprecationErrors: true,
-    }
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
 });
 
-async function run() {
-    try {
-      // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
-      // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
-      console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } finally {
-      // Ensures that the client will close when you finish/error
-        await client.close();
-    }
+async function connectToMongoDB() {
+  try {
+    await client.connect();
+    console.log("Conectado ao MongoDB com sucesso!");
+    // Aqui você pode configurar eventuais operações iniciais ou configurações
+  } catch (error) {
+    console.error("Erro ao conectar ao MongoDB:", error);
+  }
 }
-run();
 
-module.exports = client;
-//----------------------------------------------------------------
+// Exporte a função de conexão e o cliente
+module.exports = { connectToMongoDB, client };
+
+// Em outro arquivo, quando iniciar o servidor, chame a função connectToMongoDB
+// E use 'client' para realizar operações no banco de dados

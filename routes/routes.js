@@ -5,6 +5,12 @@ const PartsController = require('../controllers/PartsController')
 
 router.get('/', PartsController.getAllParts);
 
+
+router.get("/peca", async (req, res) => {
+    const peca = await PartsController.getAllParts();
+    res.send(peca);
+});
+
 router.get("/peca/:id", async (req, res) => {
 
     const id = Number(req.params.id);
@@ -14,7 +20,7 @@ router.get("/peca/:id", async (req, res) => {
 });
 
 router.put("/peca/:id", async (req, res) => {
-    const id = Number(req.params.id);
+  const id = Number(req.params.id);
   const peca = await Peca.findOneAndUpdate(
    { identificador: id},
     {
@@ -31,17 +37,9 @@ router.put("/peca/:id", async (req, res) => {
 });
 
 router.post("/peca", async (req, res) => {
-    const peca = new Peca({
-      identificador: req.body.identificador,
-      nome: req.body.nome,
-      dataAquisicao: req.body.dataAquisicao,
-      quantidade: req.body.quantidade,
-      valor: req.body.valor,
-    });
-  
-    await peca.save();
-    res.send(peca);
+    await PartsController.save(req, res);
 });
+
 
 router.delete("/peca/:id", async (req, res) => {
     const peca = await Peca.findByIdAndDelete(req.params.id);
