@@ -11,4 +11,6 @@ app.use(cors({crendentials: true, origin: '*'}))
 
 app.use(router)
 
-app.listen(port)
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
