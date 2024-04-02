@@ -15,16 +15,17 @@ module.exports = class PartsController {
     static async save(req, res){
       try{
 
-        if (!req.body.identificador || !req.body.nome || !req.body.dataAquisicao || !req.body.quantidade || !req.body.valor) {
+        if (!req.body.id || !req.body.marca || !req.body.nomePeca || !req.body.dataAquisicao || !req.body.quantidade || !req.body.preco) {
           return res.status(400).send('Dados incompletos ou inválidos');
         }
     
         const part = {
-          'identificador': req.body.identificador,
-          'nome': req.body.nome,
+          'id': req.body.id,
+          'nome': req.body.nomePeca,
+          'marca': req.body.marca,
           'dataAquisicao': req.body.dataAquisicao,
           'quantidade': req.body.quantidade,
-          'valor': req.body.valor,
+          'preco': req.body.preco,
         };
     
 
