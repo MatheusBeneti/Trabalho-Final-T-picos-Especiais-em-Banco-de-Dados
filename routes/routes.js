@@ -3,21 +3,9 @@ const router = express.Router()
 
 const PartsController = require('../controllers/PartsController')
 
-router.get('/', PartsController.getAllParts);
+router.get("/peca", PartsController.getAllParts);
 
-
-router.get("/peca", async (req, res) => {
-    const peca = await PartsController.getAllParts();
-    res.send(peca);
-});
-
-router.get("/peca/:id", async (req, res) => {
-
-    const id = Number(req.params.id);
-    const peca = await Peca.find({ identificador: id });
-    res.send(peca);
-  
-});
+router.get("/peca/:id", PartsController.find);
 
 router.put("/peca/:id", async (req, res) => {
   const id = Number(req.params.id);
@@ -36,10 +24,7 @@ router.put("/peca/:id", async (req, res) => {
   return res.send(peca);
 });
 
-router.post("/peca", async (req, res) => {
-    await PartsController.save(req, res);
-});
-
+router.post("/peca", PartsController.save);
 
 router.delete("/peca/:id", async (req, res) => {
     const peca = await Peca.findByIdAndDelete(req.params.id);

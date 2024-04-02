@@ -4,7 +4,8 @@ module.exports = class PartsController {
 
     static async getAllParts(req, res) {
       try {
-        res.send(Parts.getParts());
+        const parts = await Parts.getParts();
+        res.status(200).send(parts);
       } catch (error) {
         // Em caso de erro, envie uma resposta de erro ao cliente
         console.error(error);
@@ -30,13 +31,16 @@ module.exports = class PartsController {
     
 
         await Parts.save(part);
-        res.status(200).send('Peça salva com sucesso');
+        res.status(200);
     
       } catch(error) {
 
         console.error(`Erro ao salvar peça: ${error.message}`, error);
         res.status(500).send(`Erro interno ao salvar peça: ${error.message}`);
       }
-    }    
+    }   
+    static async find(req, res){
+      Number(req.params.id)
+    } 
   };
   
