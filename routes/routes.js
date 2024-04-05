@@ -7,22 +7,7 @@ router.get("/peca", PartsController.getAllParts);
 
 router.get("/peca/:id", PartsController.find);
 
-router.put("/peca/:id", async (req, res) => {
-  const id = Number(req.params.id);
-  const peca = await Peca.findOneAndUpdate(
-   { identificador: id},
-    {
-      identificador: req.body.identificador,
-      nome: req.body.nome,
-      dataAquisicao: req.body.dataAquisicao,
-      quantidade: req.body.quantidade,
-      valor: req.body.valor,
-    },
-    { new: true }
-  );
-
-  return res.send(peca);
-});
+router.put("/peca/:id", PartsController.update);
 
 router.post("/peca", PartsController.save);
 
