@@ -11,9 +11,6 @@ router.put("/peca/:id", PartsController.update);
 
 router.post("/peca", PartsController.save);
 
-router.delete("/peca/:id", async (req, res) => {
-    const peca = await Peca.findByIdAndDelete(req.params.id);
-    res.send(peca);
-});
+router.delete("/peca/:id", PartsController.delete);
 
 module.exports = router

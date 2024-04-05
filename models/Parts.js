@@ -29,13 +29,34 @@ module.exports = class Parts {
         }
     }
 
-    static async findOneAndUpdate(part){
+    static async findOneAndUpdate(part) {
         try {
-            
+          return await client.db().collection('parts').updateOne(
+            { id: part.id },  
+            {
+              $set: {
+                nomePeca: part.nomePeca,
+                marca: part.marca,
+                dataAquisicao: part.dataAquisicao,
+                quantidade: part.quantidade,
+                preco: part.preco,
+              },
+            },
+            { upsert: true } 
+          );
         } catch (error) {
-            console.error("Error updating part:", error);
-            throw error;
+          console.error("Error updating part:", error);
+          throw error;
         }
+      }
+      
+    static async delete(id){
+        try {
+            return await client.db().collection('parts').deleteOne({id:id});
+        }catch (error) {
+            console.error('Erro ao excluir documento:', error);
+            throw new Error('Falha na exclusão de documento');
+        }     
     }
     
 }

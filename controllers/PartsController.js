@@ -29,7 +29,6 @@ module.exports = class PartsController {
           'preco': req.body.preco,
         };
     
-
         await Parts.save(part);
         res.status(200);
     
@@ -50,9 +49,8 @@ module.exports = class PartsController {
         return res.status(200).send(part);
 
       } catch (error) {
-
+        console.error(error);
         return res.status(404);
-
       }
     }
     
@@ -62,8 +60,6 @@ module.exports = class PartsController {
         if (!req.body.id || !req.body.marca || !req.body.nomePeca || !req.body.dataAquisicao || !req.body.quantidade || !req.body.preco) {
           return res.status(400).send('Dados incompletos ou inválidos');
         }
-
-        console.log(req.body.id);
 
         const newPart = {
           'id': req.body.id,
@@ -75,11 +71,21 @@ module.exports = class PartsController {
         };
   
         const part = await Parts.findOneAndUpdate(newPart);
-       
-        return res.send(part);
+
+        res.send(part);
 
       } catch (error) {
-        
+        res.status(error.statusCode);
+      }
+    }
+
+    static async delete(req, res) {
+      try {
+        const peca = await Parts.delete(req.params.id);
+        res.send(peca);  
+      } catch (error) {
+        console.error(error);
+        res.status(500).send(error)
       }
     }
   };
