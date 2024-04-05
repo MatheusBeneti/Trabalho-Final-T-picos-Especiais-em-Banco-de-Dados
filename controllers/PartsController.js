@@ -57,9 +57,7 @@ module.exports = class PartsController {
     static async update(req, res){
       try {
 
-        if (!req.body.id || !req.body.marca || !req.body.nomePeca || !req.body.dataAquisicao || !req.body.quantidade || !req.body.preco) {
-          return res.status(400).send('Dados incompletos ou inválidos');
-        }
+        console.log("requisição:::::",req.body);
 
         const newPart = {
           'id': req.body.id,
