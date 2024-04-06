@@ -7,19 +7,13 @@ module.exports = class PartsController {
         const parts = await Parts.findAll();
         res.status(200).send(parts);
       } catch (error) {
-        // Em caso de erro, envie uma resposta de erro ao cliente
         console.error(error);
         res.status(500).send('Erro ao buscar peças');
       }
     }
 
     static async save(req, res){
-      try{
-
-        if (!req.body.id || !req.body.marca || !req.body.nomePeca || !req.body.dataAquisicao || !req.body.quantidade || !req.body.preco) {
-          return res.status(400).send('Dados incompletos ou inválidos');
-        }
-    
+      try{  
         const part = {
           'id': req.body.id,
           'nomePeca': req.body.nomePeca,
@@ -36,6 +30,7 @@ module.exports = class PartsController {
 
         console.error(`Erro ao salvar peça: ${error.message}`, error);
         res.status(500).send(`Erro interno ao salvar peça: ${error.message}`);
+        
       }
     }   
 
@@ -56,9 +51,6 @@ module.exports = class PartsController {
     
     static async update(req, res){
       try {
-
-        console.log("requisição:::::",req.body);
-
         const newPart = {
           'id': req.body.id,
           'nomePeca': req.body.nomePeca,
