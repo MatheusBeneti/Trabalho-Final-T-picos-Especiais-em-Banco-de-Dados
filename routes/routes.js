@@ -4,7 +4,7 @@ const router = express.Router()
 const PartsController = require('../controllers/PartsController')
 
 router.get("/", (req, res) => {
-    res.send("Rodando");
+    res.send("Server online!");
 });
 
 router.get("/peca", PartsController.getAllParts);
