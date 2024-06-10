@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Trabalho final de topicos especiais em banco de dados",
   "main": "index.js",
+  "engine":{
+    "node": "14.x"
+  },
   "scripts": {
     "start": "node ./index.js"
   },
