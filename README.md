@@ -17,7 +17,9 @@ Gearkeep é um projeto de estudo dedicado à gestão de estoque de peças para o
 O projeto foi concebido com o objetivo de aprimorar tanto os conhecimentos teóricos quanto práticos sobre API's, bancos NoSQL e o padrão MVC. Sua execução foi fundamental para compreender a dinâmica da comunicação entre front-end e back-end, além de oferecer uma valiosa experiência em trabalho colaborativo.
 
 ## Front-end
-link: [https://github.com/guigutox/Trabalho-Final-Topicos-Especiais-em-Banco-de-Dados-FrontEnd](https://github.com/MatheusBeneti/Gearkeep-Frontend)
+Repositório: [https://github.com/guigutox/Trabalho-Final-Topicos-Especiais-em-Banco-de-Dados-FrontEnd](https://github.com/MatheusBeneti/Gearkeep-Frontend)
+Produção: [https://matheusbeneti.github.io/Gearkeep-Frontend/](https://matheusbeneti.github.io/Gearkeep-Frontend/)
+
 ### Relátorio de peças
 ![image](https://github.com/MatheusBeneti/Gearkeep-Sistema-para-gerenciamento-de-estoque/assets/129100040/c1bf3a30-5385-4551-9a9e-ac970bb93b75)
 ### Cadastrar peças
